@@ -17,12 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: System deps (build tools)
-        run: |
-          apt-get update
-          apt-get install -y --no-install-recommends gcc build-essential git curl
-          rm -rf /var/lib/apt/lists/*
-
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade "pip<21" "setuptools<45" "wheel<0.35"
