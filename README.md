@@ -22,3 +22,50 @@ If all went well then your command line prompt should now start with `(productio
 If your command line prompt does not start with `(productionready)` at this point, try running `pyenv activate productionready` or `cd ../productionready-django-api`. 
 
 If pyenv is still not working, visit us in the Thinkster Slack channel so we can help you out.
+## Delivery 1 — Discovery & Reverse Engineering
+
+Objetivo: comprender el sistema legacy mediante ingeniería inversa y documentar su estructura funcional y técnica.
+
+Actividades principales:
+
+- **Onboarding Log (DevEx Audit)**  
+  Documentación del proceso de instalación y ejecución del sistema legacy (Python 3.5 / Django 1.10) e identificación de friction points.
+
+- **Context Map (DDD)**  
+  Identificación de los principales Bounded Contexts del sistema:
+  - Authentication & Identity
+  - Articles & Content
+  - Profiles & Social Graph
+
+- **Backlog Recovery**  
+  Reconstrucción de funcionalidades existentes a partir del análisis del código fuente y endpoints API.
+
+Documento completo:
+
+- Delivery 1 Report: [docs/Delivery_1.pdf](docs/Delivery_1.pdf)
+
+## Delivery 2 — Governance & Technical Debt Audit
+
+Objetivo: establecer una estrategia de calidad y gobierno técnico para el sistema legacy mediante métricas automatizadas y análisis de deuda técnica.
+
+Actividades principales:
+
+- **Governance Pipeline (CI)**  
+  Configuración de un workflow de GitHub Actions que ejecuta análisis de calidad en Pull Requests, incluyendo métricas de cobertura de código y complejidad ciclomática.
+
+- **Quality Gates & SonarQube**  
+  Definición de Quality Gates automáticos para prevenir degradación de calidad y configuración de análisis estático mediante SonarQube/SonarCloud.
+
+- **Tech Debt Audit (Hotspots)**  
+  Identificación de los principales hotspots del sistema basada en riesgo e impacto, junto con un plan de refactorización incremental usando el patrón Strangler Fig.
+
+- **DORA Metrics Dashboard**  
+  Definición de un dashboard con las cuatro métricas DORA utilizando datos provenientes de GitHub (PRs, Actions y commits).
+
+Documentación detallada:
+
+- Governance summary: [docs/delivery-2/governance.md](docs/delivery-2/governance.md)
+- Tech debt audit: [docs/delivery-2/tech-debt-audit.md](docs/delivery-2/tech-debt-audit.md)
+- SonarQube setup: [docs/delivery-2/sonarqube.md](docs/delivery-2/sonarqube.md)
+- DORA dashboard: [docs/delivery-2/dora-dashboard.md](docs/delivery-2/dora-dashboard.md)
+
