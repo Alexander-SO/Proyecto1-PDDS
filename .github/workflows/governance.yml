@@ -10,16 +10,20 @@ jobs:
   quality:
     runs-on: ubuntu-latest
 
+    container:
+      image: python:3.5-slim
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.5.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.5.10"
+      - name: System deps (build tools)
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends gcc build-essential git curl
+          rm -rf /var/lib/apt/lists/*
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade "pip<21" "setuptools<45" "wheel<0.35"
           pip install -r requirements.txt
@@ -41,5 +45,4 @@ jobs:
           path: |
             coverage.xml
             radon-report.txt
-
 
