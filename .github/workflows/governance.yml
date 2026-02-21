@@ -32,6 +32,10 @@ jobs:
           radon cc -s -a conduit/apps | tee radon-report.txt
           radon mi -s conduit/apps | tee -a radon-report.txt
 
+      - name: Quality Gates
+        run: |
+        ./Scripts/quality_gates.sh
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
