@@ -68,7 +68,4 @@ Documentación detallada:
 - Tech debt audit: [docs/delivery-2/tech-debt-audit.md](docs/delivery-2/tech-debt-audit.md)
 - SonarQube setup: [docs/delivery-2/sonarqube.md](docs/delivery-2/sonarqube.md)
 - DORA dashboard: [docs/delivery-2/dora-dashboard.md](docs/delivery-2/dora-dashboard.md)
-## Delivery 2 — Governance & Technical Debt Audit
-- Governance summary: [docs/delivery-2/governance.md](docs/delivery-2/governance.md)
-- Tech debt audit + Strangler Fig plan: [docs/delivery-2/tech-debt-audit.md](docs/delivery-2/tech-debt-audit.md)
-- SonarQube/SonarCloud setup: [docs/delivery-2/sonarqube.md](docs/delivery-2/sonarqu
+
