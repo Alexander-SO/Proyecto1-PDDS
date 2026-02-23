@@ -1,0 +1,72 @@
+name: Governance CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+  sonar:
+    runs-on: ubuntu-latest
+    needs: [quality]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download governance artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: governance-reports
+          path: .
+
+      - name: SonarCloud Scan
+        if: ${{ secrets.SONAR_TOKEN }}
+        uses: sonarsource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: SonarCloud Quality Gate
+        if: ${{ secrets.SONAR_TOKEN }}
+        uses: sonarsource/sonarcloud-quality-gate-action@v1.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    container:
+      image: python:3.5-slim
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade "pip<21" "setuptools<45" "wheel<0.35"
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run tests with coverage
+        run: |
+          pytest --maxfail=1 --disable-warnings --cov=conduit --cov-report=xml --cov-report=term || true
+
+      - name: Cyclomatic complexity (radon)
+        run: |
+          radon cc -s -a conduit/apps | tee radon-report.txt
+          radon mi -s conduit/apps | tee -a radon-report.txt
+
+      - name: Quality Gates
+        run: |
+        ./Scripts/quality_gates.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-reports
+          path: |
+            coverage.xml
+            radon-report.txt
+
