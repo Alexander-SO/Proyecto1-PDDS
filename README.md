@@ -94,8 +94,8 @@ PyJWT 1.4.2 → PyJWT 1.5.1
 
 Después de aplicar los cambios se ejecutó nuevamente el escaneo para verificar la remediación.
 Evidencia disponible en:
-[docs/delivery-3/trivy-before.txt](docs/delivery-3/trivy-before.txt)
-[docs/delivery-3/trivy-after.txt](docs/delivery-3/trivy-after.txt)
+-[docs/delivery-3/trivy-before.txt](docs/delivery-3/trivy-before.txt)
+-[docs/delivery-3/trivy-after.txt](docs/delivery-3/trivy-after.txt)
 
 ---
 ### Protección de secretos
@@ -109,9 +109,9 @@ Durante las pruebas se introdujo un secreto ficticio y el commit fue bloqueado c
 
 ### Documentación
 La documentación completa de esta fase se encuentra en:
-[docs/delivery-3/security.md](docs/delivery-3/security.md)
-[docs/delivery-3/vulnerability-remediation.md](docs/delivery-3/vulnerability-remediation.md)
-[docs/delivery-3/secrets-protection.md](docs/delivery-3/secrets-protection.md)
+-[docs/delivery-3/security.md](docs/delivery-3/security.md)
+-[docs/delivery-3/vulnerability-remediation.md](docs/delivery-3/vulnerability-remediation.md)
+-[docs/delivery-3/secrets-protection.md](docs/delivery-3/secrets-protection.md)
 
 
 
