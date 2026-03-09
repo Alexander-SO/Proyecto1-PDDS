@@ -69,3 +69,49 @@ Documentación detallada:
 - SonarQube setup: [docs/delivery-2/sonarqube.md](docs/delivery-2/sonarqube.md)
 - DORA dashboard: [docs/delivery-2/dora-dashboard.md](docs/delivery-2/dora-dashboard.md)
 
+## Delivery 3 – Security Hardening (DevSecOps)
+En esta fase se implementaron mejoras de seguridad enfocadas en la **cadena de suministro de software** y en fortalecer el flujo de desarrollo seguro del proyecto.
+
+### SBOM (Software Bill of Materials)
+Se generó un SBOM del proyecto utilizando **Trivy** en formato **CycloneDX**, el cual documenta todas las dependencias utilizadas por la aplicación.
+
+Archivo generado:
+docs/delivery-3/sbom.json
+Esto permite analizar riesgos en dependencias externas y facilita auditorías de seguridad.
+
+---
+### Escaneo y remediación de vulnerabilidades
+Se ejecutó un escaneo de vulnerabilidades utilizando **Trivy** sobre las dependencias del proyecto.
+Resultados iniciales:
+CRITICAL: 3
+HIGH: 4
+MEDIUM: 7
+LOW: 1
+
+Se identificaron vulnerabilidades en dependencias críticas del sistema y se aplicaron las siguientes actualizaciones:
+Django 1.10.5 → Django 1.11.27
+PyJWT 1.4.2 → PyJWT 1.5.1
+
+Después de aplicar los cambios se ejecutó nuevamente el escaneo para verificar la remediación.
+Evidencia disponible en:
+[docs/delivery-3/trivy-before.txt]
+[docs/delivery-3/trivy-after.txt]
+
+---
+### Protección de secretos
+Se implementó un **hook de pre-commit** utilizando `detect-secrets` para prevenir que claves API o credenciales sean accidentalmente subidas al repositorio.
+Se generó un archivo baseline:
+.secrets.baseline
+
+Durante las pruebas se introdujo un secreto ficticio y el commit fue bloqueado correctamente por el hook.
+
+---
+
+### Documentación
+La documentación completa de esta fase se encuentra en:
+[docs/delivery-3/security.md]
+[docs/delivery-3/vulnerability-remediation.md]
+[docs/delivery-3/secrets-protection.md]
+
+
+
