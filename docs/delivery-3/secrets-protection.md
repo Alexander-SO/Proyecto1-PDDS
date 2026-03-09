@@ -43,9 +43,10 @@ Este archivo permite identificar únicamente secretos nuevos que puedan introduc
 ## Prueba de funcionamiento
 
 Se introdujo un secreto ficticio para validar el mecanismo:
-
+API_KEY="sk_test_1234567890abcdef"
 
 Intento de commit:
+
 git commit -m "test: add dummy secret"
 
 
