@@ -12,6 +12,17 @@ Inicialmente se intentó implementar la protección utilizando el framework **pr
 
 .pre-commit-config.yaml
 
+Sin embargo, debido a limitaciones del entorno legacy utilizado para el proyecto (Python 3.5 y restricciones del sistema de archivos en WSL), el framework no pudo crear el entorno virtual requerido.
+
+---
+
+## Implementación final
+
+Se implementó un **hook de pre-commit nativo de Git** utilizando la herramienta `detect-secrets`.
+
+Ubicación del hook:
+
+.git/hooks/pre-commit
 
 El hook ejecuta un análisis sobre los archivos staged antes de cada commit y compara los resultados con una línea base.
 
@@ -24,7 +35,6 @@ Se generó un archivo de referencia:
 
 Comando utilizado:
 detect-secrets scan > .secrets.baseline
-
 
 Este archivo permite identificar únicamente secretos nuevos que puedan introducirse en el repositorio.
 
