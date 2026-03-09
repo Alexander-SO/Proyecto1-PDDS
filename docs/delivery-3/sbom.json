@@ -1,0 +1,208 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4b14e9ec-5cd6-4c53-89b2-994839622425",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-03-09T01:42:11+00:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "manufacturer": {
+            "name": "Aqua Security Software Ltd."
+          },
+          "group": "aquasecurity",
+          "name": "trivy",
+          "version": "0.69.3"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "1f74c375-1ccc-4758-a86d-2a52890bbcc7",
+      "type": "application",
+      "name": ".",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:SchemaVersion",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "8064de4b-a206-4749-8a25-d6cbdc9d9292",
+      "type": "application",
+      "name": "requirements.txt",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/django-cors-middleware@1.3.1",
+      "type": "library",
+      "name": "django-cors-middleware",
+      "version": "1.3.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:pypi/django-cors-middleware@1.3.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/django-extensions@1.7.1",
+      "type": "library",
+      "name": "django-extensions",
+      "version": "1.7.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:pypi/django-extensions@1.7.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/django@1.10.5",
+      "type": "library",
+      "name": "Django",
+      "version": "1.10.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:pypi/django@1.10.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/djangorestframework@3.4.4",
+      "type": "library",
+      "name": "djangorestframework",
+      "version": "3.4.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:pypi/djangorestframework@3.4.4",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/pyjwt@1.4.2",
+      "type": "library",
+      "name": "PyJWT",
+      "version": "1.4.2",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:pypi/pyjwt@1.4.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/six@1.10.0",
+      "type": "library",
+      "name": "six",
+      "version": "1.10.0",
+      "purl": "pkg:pypi/six@1.10.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "1f74c375-1ccc-4758-a86d-2a52890bbcc7",
+      "dependsOn": [
+        "8064de4b-a206-4749-8a25-d6cbdc9d9292"
+      ]
+    },
+    {
+      "ref": "8064de4b-a206-4749-8a25-d6cbdc9d9292",
+      "dependsOn": [
+        "pkg:pypi/django-cors-middleware@1.3.1",
+        "pkg:pypi/django-extensions@1.7.1",
+        "pkg:pypi/django@1.10.5",
+        "pkg:pypi/djangorestframework@3.4.4",
+        "pkg:pypi/pyjwt@1.4.2",
+        "pkg:pypi/six@1.10.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/django-cors-middleware@1.3.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/django-extensions@1.7.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/django@1.10.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/djangorestframework@3.4.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/pyjwt@1.4.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/six@1.10.0",
+      "dependsOn": []
+    }
+  ],
+  "vulnerabilities": []
+}
