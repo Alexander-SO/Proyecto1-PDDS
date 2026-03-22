@@ -112,5 +112,41 @@ La documentación completa de esta fase se encuentra en:
 - [docs/delivery-3/vulnerability-remediation.md](docs/delivery-3/vulnerability-remediation.md)
 - [docs/delivery-3/secrets-protection.md](docs/delivery-3/secrets-protection.md)
 
+## Delivery 4 – Architecture Strategy & DevEx
 
+En esta fase se mejoró la experiencia de desarrollo (DevEx) y se definió una estrategia arquitectónica para la evolución del sistema.
+
+### One-Command Setup
+
+Se implementó un entorno reproducible utilizando Docker, permitiendo levantar el proyecto con un solo comando:
+docker compose up --build
+
+
+Esto resuelve los problemas de configuración del entorno legacy identificados en fases anteriores.
+
+Documentación:
+docs/delivery-4/devex-setup.md
+
+
+---
+
+### ADR – Estrategia arquitectónica
+
+Se propuso una estrategia de evolución basada en un **monolito modular**, priorizando la reducción de acoplamiento interno antes de considerar microservicios.
+
+Documento ADR:
+docs/delivery-4/adr-001-modular-monolith.md
+
+
+---
+
+### Enfoque
+
+La decisión se basa en:
+
+- la estructura actual del proyecto
+- los hotspots identificados en fases anteriores
+- el nivel actual de madurez técnica del sistema
+
+El objetivo es reducir la deuda técnica de forma incremental y segura.
 
