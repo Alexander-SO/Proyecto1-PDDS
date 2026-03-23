@@ -136,3 +136,12 @@ Esto implica:
 - Reducción progresiva de deuda técnica
 - Base más sólida para futuras decisiones arquitectónicas
 - Mejor experiencia de desarrollo al trabajar sobre dominios más claros
+
+## Diagramas de arquitectura
+
+### Estado actual (AS-IS)
+!(docs/delivery-4/actual.png)
+
+### Estado propuesto (TO-BE)
+!(docs/delivery-4/propuesto.png)
+
