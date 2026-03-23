@@ -140,8 +140,8 @@ Esto implica:
 ## Diagramas de arquitectura
 
 ### Estado actual (AS-IS)
-![](docs/delivery-4/actual.png)
+![Actual](docs/delivery-4/actual.png)
 
 ### Estado propuesto (TO-BE)
-![](docs/delivery-4/propuesto.png)
+![Propuesto](docs/delivery-4/propuesto.png)
 
