@@ -65,9 +65,17 @@ class ArticleSerializer(serializers.ModelSerializer):
         if not request.user.is_authenticated():
             return False
 
+        favorited_ids = self.context.get('favorited_ids', None)
+        if favorited_ids is not None:
+            return instance.pk in favorited_ids
+
         return request.user.profile.has_favorited(instance)
 
     def get_favorites_count(self, instance):
+        annotated_value = getattr(instance, 'favorites_count', None)
+        if annotated_value is not None:
+            return annotated_value
+
         return instance.favorited_by.count()
 
     def get_updated_at(self, instance):

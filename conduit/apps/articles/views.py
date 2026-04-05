@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import generics, mixins, status, viewsets
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import (
@@ -17,7 +18,13 @@ class ArticleViewSet(mixins.CreateModelMixin,
                      viewsets.GenericViewSet):
 
     lookup_field = 'slug'
-    queryset = Article.objects.select_related('author', 'author__user')
+    queryset = Article.objects.select_related(
+        'author', 'author__user'
+    ).prefetch_related(
+        'tags'
+    ).annotate(
+        favorites_count=Count('favorited_by', distinct=True)
+    )
     permission_classes = (IsAuthenticatedOrReadOnly,)
     renderer_classes = (ArticleJSONRenderer,)
     serializer_class = ArticleSerializer
@@ -57,8 +64,19 @@ class ArticleViewSet(mixins.CreateModelMixin,
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def list(self, request):
-        serializer_context = {'request': request}
-        page = self.paginate_queryset(self.get_queryset())
+        queryset = self.get_queryset()
+        page = self.paginate_queryset(queryset)
+
+        favorited_ids = set()
+        if request.user.is_authenticated():
+            favorited_ids = set(
+                request.user.profile.favorites.values_list('pk', flat=True)
+            )
+
+        serializer_context = {
+            'request': request,
+            'favorited_ids': favorited_ids
+        }
 
         serializer = self.serializer_class(
             page,
