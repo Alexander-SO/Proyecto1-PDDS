@@ -150,3 +150,42 @@ La decisión se basa en:
 
 El objetivo es reducir la deuda técnica de forma incremental y segura.
 
+
+## Delivery 5 – FinOps Optimization
+
+En esta fase se optimizó el rendimiento del sistema mediante análisis y refactorización de un endpoint crítico.
+
+### Endpoint optimizado
+
+GET /api/articles
+
+---
+
+### Resultados
+
+- 49% mejora en tiempo de respuesta
+- 92.9% reducción en consultas SQL
+
+---
+
+### Enfoque
+
+Se identificó un problema de tipo N+1 queries y se aplicaron optimizaciones utilizando:
+
+- `prefetch_related`
+- `annotate`
+- caching a nivel de request
+
+---
+
+### Benchmark
+
+Ver resultados completos:
+
+docs/delivery-5/benchmark-results.md
+
+---
+
+### Impacto FinOps
+
+La optimización reduce el costo unitario por request y mejora la capacidad de procesamiento por instancia.

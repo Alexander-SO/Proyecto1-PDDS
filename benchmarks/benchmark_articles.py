@@ -60,7 +60,7 @@ def run_benchmark(iterations=5):
         "user": {
             "username": "tempbench",
             "email": "tempbench@example.com",
-            "password": "tempbench123"
+            "password": ""
         }
     }), content_type="application/json", HTTP_HOST="localhost")
 
