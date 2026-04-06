@@ -2,26 +2,52 @@
 
 > ### Example Django DRF codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
 
-<a href="https://thinkster.io/tutorials/django-json-api" target="_blank"><img width="454" src="https://raw.githubusercontent.com/gothinkster/realworld/master/media/learn-btn-hr.png" /></a>
+# Proyecto: Modernización y Optimización de API Django Legacy
 
-This repo is functionality complete — PR's and issues welcome!
+Este proyecto consiste en la evolución de una aplicación backend legacy basada en Django, tomada del repositorio original de [https://github.com/gothinkster/django-realworld-example-app](https://github.com/gothinkster/django-realworld-example-app) como parte de una serie de ejercicios académicos enfocados en la integración de prácticas de ingeniería de software moderna.
 
-## Installation
+El objetivo principal fue transformar un sistema existente mediante técnicas de:
+- análisis de arquitectura (Discovery)
+- gobernanza técnica (CI/CD y métricas)
+- seguridad (DevSecOps)
+- estrategia arquitectónica (ADR)
+- optimización de rendimiento y costos (FinOps)
 
-1. Clone this repository: `git clone git@github.com:gothinkster/productionready-django-api.git`.
-2. `cd` into `conduit-django`: `cd productionready-django-api`.
-3. Install [pyenv](https://github.com/yyuu/pyenv#installation).
-4. Install [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv#installation).
-5. Install Python 3.5.2: `pyenv install 3.5.2`.
-6. Create a new virtualenv called `productionready`: `pyenv virtualenv 3.5.2 productionready`.
-7. Set the local virtualenv to `productionready`: `pyenv local productionready`.
-8. Reload the `pyenv` environment: `pyenv rehash`.
+---
 
-If all went well then your command line prompt should now start with `(productionready)`.
+## Descripción del sistema
 
-If your command line prompt does not start with `(productionready)` at this point, try running `pyenv activate productionready` or `cd ../productionready-django-api`. 
+El sistema es una API REST construida con Django que permite gestionar:
 
-If pyenv is still not working, visit us in the Thinkster Slack channel so we can help you out.
+- usuarios y autenticación
+- artículos (creación, listado, favoritos)
+- perfiles de usuario
+- comentarios y tags
+
+Originalmente, el sistema presentaba características típicas de un sistema legacy:
+
+- dependencias obsoletas (Python 3.5, Django 1.x)
+- bajo nivel de pruebas
+- alto acoplamiento interno
+- dificultades de onboarding
+- problemas de rendimiento en endpoints críticos
+
+---
+
+## Objetivo del proyecto
+
+Aplicar prácticas de **Staff Engineering** para:
+
+- mejorar la mantenibilidad del sistema
+- introducir gobernanza técnica
+- fortalecer la seguridad
+- optimizar el rendimiento
+- mejorar la experiencia de desarrollo (DevEx)
+- reducir el costo computacional por request (FinOps)
+
+---
+
+## Entregas del proyecto
 ## Delivery 1 — Discovery & Reverse Engineering
 
 Objetivo: comprender el sistema legacy mediante ingeniería inversa y documentar su estructura funcional y técnica.
@@ -78,7 +104,6 @@ Se generó un SBOM del proyecto utilizando **Trivy** en formato **CycloneDX**, e
 - Archivo generado: [docs/delivery-3/sbom.json](docs/delivery-3/sbom.json)
 - Esto permite analizar riesgos en dependencias externas y facilita auditorías de seguridad. 
 
----
 ### Escaneo y remediación de vulnerabilidades
 Se ejecutó un escaneo de vulnerabilidades utilizando **Trivy** sobre las dependencias del proyecto.
 Resultados iniciales:
@@ -96,15 +121,12 @@ Después de aplicar los cambios se ejecutó nuevamente el escaneo para verificar
 - [docs/delivery-3/trivy-before.txt](docs/delivery-3/trivy-before.txt)
 - [docs/delivery-3/trivy-after.txt](docs/delivery-3/trivy-after.txt)
 
----
 ### Protección de secretos
 Se implementó un **hook de pre-commit** utilizando `detect-secrets` para prevenir que claves API o credenciales sean accidentalmente subidas al repositorio.
 Se generó un archivo baseline:
 - .secrets.baseline
 
 Durante las pruebas se introdujo un secreto ficticio y el commit fue bloqueado correctamente por el hook.
-
----
 
 ### Documentación
 La documentación completa de esta fase se encuentra en:
@@ -125,31 +147,27 @@ docker compose up --build
 Esto resuelve los problemas de configuración del entorno legacy identificados en fases anteriores.
 
 Documentación:
-docs/delivery-4/devex-setup.md
-
-
----
+[docs/delivery-4/devex-setup.md](docs/delivery-4/devex-setup.md)
 
 ### ADR – Estrategia arquitectónica
 
 Se propuso una estrategia de evolución basada en un **monolito modular**, priorizando la reducción de acoplamiento interno antes de considerar microservicios.
 
 Documento ADR:
-docs/delivery-4/adr-001-modular-monolith.md
+[docs/delivery-4/adr-001-modular-monolith.md](docs/delivery-4/adr-001-modular-monolith.md)
 
-
----
 
 ### Enfoque
 
 La decisión se basa en:
 
-- la estructura actual del proyecto
-- los hotspots identificados en fases anteriores
-- el nivel actual de madurez técnica del sistema
+- La estructura actual del proyecto
+- Los hotspots identificados en fases anteriores
+- El nivel actual de madurez técnica del sistema
 
 El objetivo es reducir la deuda técnica de forma incremental y segura.
 
+---
 
 ## Delivery 5 – FinOps Optimization
 
@@ -159,14 +177,12 @@ En esta fase se optimizó el rendimiento del sistema mediante análisis y refact
 
 GET /api/articles
 
----
 
 ### Resultados
 
 - 49% mejora en tiempo de respuesta
 - 92.9% reducción en consultas SQL
 
----
 
 ### Enfoque
 
@@ -176,16 +192,24 @@ Se identificó un problema de tipo N+1 queries y se aplicaron optimizaciones uti
 - `annotate`
 - caching a nivel de request
 
----
 
 ### Benchmark
 
 Ver resultados completos:
 
-docs/delivery-5/benchmark-results.md
+[docs/delivery-5/benchmark-results.md](docs/delivery-5/benchmark-results.md)
 
----
 
 ### Impacto FinOps
 
 La optimización reduce el costo unitario por request y mejora la capacidad de procesamiento por instancia.
+
+---
+## Ejecución del proyecto
+Opción recomendada (Docker)
+
+docker compose up --build 
+
+Luego acceder a:
+
+http://localhost:8000/api/tags
