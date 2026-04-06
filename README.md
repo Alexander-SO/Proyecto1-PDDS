@@ -96,7 +96,7 @@ Documentación detallada:
 - DORA dashboard: [docs/delivery-2/dora-dashboard.md](docs/delivery-2/dora-dashboard.md)
 
 ## Delivery 3 – Security Hardening (DevSecOps)
-En esta fase se implementaron mejoras de seguridad enfocadas en la **cadena de suministro de software** y en fortalecer el flujo de desarrollo seguro del proyecto.
+Objetivo: Implementar mejoras de seguridad enfocadas en la **cadena de suministro de software** y en fortalecer el flujo de desarrollo seguro del proyecto.
 
 ### SBOM (Software Bill of Materials)
 Se generó un SBOM del proyecto utilizando **Trivy** en formato **CycloneDX**, el cual documenta todas las dependencias utilizadas por la aplicación.
@@ -136,7 +136,7 @@ La documentación completa de esta fase se encuentra en:
 
 ## Delivery 4 – Architecture Strategy & DevEx
 
-En esta fase se mejoró la experiencia de desarrollo (DevEx) y se definió una estrategia arquitectónica para la evolución del sistema.
+Objetivo:Mejorar la experiencia de desarrollo (DevEx) y se definir una estrategia arquitectónica para la evolución del sistema.
 
 ### One-Command Setup
 
@@ -171,7 +171,7 @@ El objetivo es reducir la deuda técnica de forma incremental y segura.
 
 ## Delivery 5 – FinOps Optimization
 
-En esta fase se optimizó el rendimiento del sistema mediante análisis y refactorización de un endpoint crítico.
+Objetivo: Optimizar el rendimiento del sistema mediante análisis y refactorización de un endpoint crítico.
 
 ### Endpoint optimizado
 
